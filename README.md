@@ -1,15 +1,13 @@
 # 🛡️ Aether‑Guard
-## AMD‑Accelerated, Privacy‑First & Explainable AI Cybersecurity Companion
+### AMD‑Accelerated, Privacy‑First & Explainable AI Cybersecurity Solution
 
-Aether‑Guard is an AI‑powered cybersecurity solution designed to protect **students and educational institutions** from phishing attacks, malware, fake documents, and identity misuse. Unlike traditional enterprise security tools, Aether‑Guard focuses on **early detection, explainable alerts, and user education**, making cybersecurity simple and understandable for non‑technical users.
-
-The system is **AMD‑first by design**, leveraging AMD CPUs, GPUs, NPUs, and the ROCm platform to enable high‑performance, privacy‑preserving AI inference on‑device and on‑campus.
+Aether‑Guard is an AI‑powered cybersecurity system designed to protect **students and educational institutions** from phishing, malware, fake documents, and identity misuse. The solution focuses on **early threat detection, explainable alerts, and privacy‑preserving AI**, while being **AMD‑first** in hardware acceleration.
 
 ---
 
 ## 🚨 Problem Statement
 
-Students are increasingly targeted by phishing emails, fake internship scams, malware‑infected documents, and identity misuse across emails, shared files, and campus portals. Existing cybersecurity solutions are reactive, complex, and built for IT teams, not students. As a result, users fail to understand risks, ignore warnings, and expose sensitive personal and academic data.
+Students and institutions are increasingly targeted by phishing emails, fake internship scams, malware‑infected documents, and identity misuse. Existing cybersecurity tools are reactive, complex, and built for IT teams, not students, leading to poor awareness, ignored alerts, and data exposure.
 
 ---
 
@@ -17,22 +15,31 @@ Students are increasingly targeted by phishing emails, fake internship scams, ma
 
 Aether‑Guard acts as a **digital security companion** that:
 - Detects threats in real time  
-- Explains *why* something is risky in plain language  
-- Preserves privacy by avoiding raw PII exposure  
+- Explains risks in simple language  
+- Preserves user privacy  
 - Educates users through teach‑back guidance  
 
 ---
 
 ## ✨ Key Features
 
-- Real‑time phishing and malicious link detection  
+- Real‑time phishing & malicious link detection  
 - Malware and tampered document detection  
-- Suspicious login and identity‑misuse monitoring  
-- Explainable, plain‑language security alerts  
-- Teach‑back guidance for digital hygiene  
-- Privacy‑preserving on‑device / on‑campus inference  
+- Suspicious login & identity misuse detection  
+- Explainable, plain‑language alerts  
+- Teach‑back digital hygiene guidance  
+- Privacy‑preserving on‑device / on‑campus AI  
 - Institutional dashboard with privacy‑safe insights  
 
 ---
 
-## 🧠 System Architecture
+## 🧠 High‑Level Architecture (Graphical)
+
+```mermaid
+flowchart LR
+    A[Students / Faculty] --> B[Emails • Files • Logins]
+    B --> C[AI Security Engine<br/>(AMD Accelerated)]
+    C --> D[Risk Scoring + Explainability]
+    D --> E[Privacy Layer<br/>(No Raw PII)]
+    E --> F[User Alerts + Teach‑Back]
+    E --> G[Institutional Dashboard]
