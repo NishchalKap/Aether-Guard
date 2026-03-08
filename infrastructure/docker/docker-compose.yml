@@ -1,0 +1,28 @@
+services:
+  api:
+    build:
+      context: ../..
+      dockerfile: infrastructure/docker/backend.Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - AETHER_GUARD_ENVIRONMENT=prod
+      - AETHER_GUARD_ENABLE_REQUEST_LOGGING=false
+      - AETHER_GUARD_STORE_RAW_INPUTS=false
+
+  # Placeholder database for later (admin dashboards, aggregated analytics, configs)
+  postgres:
+    image: postgres:16
+    environment:
+      - POSTGRES_USER=aether_guard
+      - POSTGRES_PASSWORD=aether_guard
+      - POSTGRES_DB=aether_guard
+    ports:
+      - "5432:5432"
+    volumes:
+      - aether_guard_pg:/var/lib/postgresql/data
+
+volumes:
+  aether_guard_pg:
+
+

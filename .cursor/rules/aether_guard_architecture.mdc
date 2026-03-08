@@ -1,0 +1,32 @@
+---
+alwaysApply: true
+description: Aether-Guard architecture + privacy-first conventions
+---
+# Aether‑Guard Architecture (Backend)
+
+## Design philosophy
+
+- **Privacy-first**: never persist or log raw user content by default (email text, sender, URLs, documents).
+- **Explainable**: output plain-language alerts derived from **signals**, not raw inputs.
+- **Modular**: detectors are pluggable; risk + explainability consume stable signal keys.
+- **AMD-friendly**: AI models should be runnable on CPU or ROCm; keep interfaces stable.
+
+## Key modules
+
+- API entrypoint: [`backend/aether_guard/main.py`](mdc:backend/aether_guard/main.py)
+- Routers: [`backend/aether_guard/api/router.py`](mdc:backend/aether_guard/api/router.py)
+- Threat endpoints: [`backend/aether_guard/api/routes/analyze.py`](mdc:backend/aether_guard/api/routes/analyze.py)
+- Detector contract:
+  - `Signal`: [`backend/aether_guard/detection/signals.py`](mdc:backend/aether_guard/detection/signals.py)
+  - `Detector`: [`backend/aether_guard/detection/base.py`](mdc:backend/aether_guard/detection/base.py)
+  - Pipeline: [`backend/aether_guard/detection/pipeline.py`](mdc:backend/aether_guard/detection/pipeline.py)
+- Risk scoring: [`backend/aether_guard/services/risk_engine.py`](mdc:backend/aether_guard/services/risk_engine.py)
+- Explainability: [`backend/aether_guard/explainability/alerts.py`](mdc:backend/aether_guard/explainability/alerts.py)
+- Privacy flags: [`backend/aether_guard/config.py`](mdc:backend/aether_guard/config.py)
+
+## Conventions
+
+- Detectors emit `Signal(name, confidence, source, evidence?)` with `confidence` in **[0, 1]**.
+- Detectors must not include raw URLs/sender/text in evidence by default.
+- Risk engine merges duplicate signal keys using **max confidence** and applies weights.
+
